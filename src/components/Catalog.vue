@@ -1,5 +1,9 @@
 <template>
   <div class="catalog">
+    <div class="loading" v-if="allProducts.length===0">
+      <img src="@/assets/805.svg"/>
+    </div>
+    <div class="results" v-if="allProducts.length>0">
     <div class="search">
       <v-text-field
         label="Filter"
@@ -14,6 +18,7 @@
         :product="item"
       >
       </item>
+    </div>
     </div>
     
   </div>
@@ -60,7 +65,15 @@ export default {
     top:0;
     z-index: 2;
 }
+.loading{
+  position: absolute;
+  top: 50%;
+  left:50%;
+  margin:auto;
+
+}
 .my-container{
   display: flex;
+  flex-wrap: wrap;
 }
 </style>

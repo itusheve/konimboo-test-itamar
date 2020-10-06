@@ -1,5 +1,6 @@
 <template>
   <div>
+       <router-link :to="{name:'catalog'}">Back to Catalog</router-link>
       <v-form
            ref="form"
       @submit.prevent="submit">

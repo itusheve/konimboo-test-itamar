@@ -1,7 +1,7 @@
 <template>
 <div class="item">
     <v-card elevation="12" max-width="350" class="mx-auto"> 
-      <v-system-bar lights-out></v-system-bar>
+      
       <v-carousel delimiter-icon="mdi-minus" height="300">
         <v-carousel-item
           v-for="(item, i) in product.images"
@@ -34,11 +34,19 @@
 </template>
 
 <script>
+import noimage from '@/assets/noimage.png';
+
 export default {
   name: "item",
   props: {
     product: Object,
   },
+  mounted(){
+    if(this.product.images.length===0){
+      console.log('no image!')
+      this.product.images.push({url:noimage});
+    }
+  }
   
 };
 </script>
@@ -46,6 +54,7 @@ export default {
 <style scoped>
 .item {
   flex:1;
-  direction: rtl;
+  margin-left:20px;
+  margin-top:15px;
 }
 </style>
